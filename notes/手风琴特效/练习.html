@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+            width: 1300px;
+        }
+
+        #box {
+            width: 1200px;
+            height: 400px;
+            border: 2px solid red;
+            margin: 100px auto;
+        }
+
+        #box li {
+            float: left;
+            width: 240px;
+            height: 400px;
+        }
+
+        /* li 标签的背景图，需要使用 js 代码动态添加 */
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+        // 获取所有的 li 标签
+        var $lis = $("#box ul li");
+        // 模拟后台提供的图片数据
+        var arr = ["fq1.jpg", "fq2.jpg", "fq3.jpg", "fq4.jpg", "fq5.jpg"];
+        // 记录文件路径
+        var path = "img/";
+        var during = 1000;
+
+        //2. 给每个li添加背景图
+        $lis.each(function (i) {
+
+            var url = "url( " + path + arr[i] + ")";
+
+            $(this).css("background-image", url)
+        })
+
+        //3.鼠标移上动画效果,自己的宽度800，其他兄弟100
+        $lis.mouseenter(
+            function () {
+                $(this).stop(true).animate({
+                    "width": 800,
+                    during
+                }).siblings().animate(
+                    {
+                        "width": 100,
+                        during
+                    }
+                )
+            }
+            )
+            //注意鼠标离开，原来的界面回复默认效果
+        $("#box").mouseleave(
+            function () {
+                $lis.stop(true).animate(
+                    {
+                        "width": 240,
+                        during
+                    }
+                )
+            }
+        )
+
+    </script>
+</body>
+
+</html>

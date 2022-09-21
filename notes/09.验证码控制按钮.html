@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>  
+</head>
+
+<body>
+  <input type="text">
+  <input type="button" value="发送">
+
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script>
+
+    //获取按钮的元素
+    var $btn = $("input:button")
+    //鼠标点击按钮
+    $btn.click(function(){
+        //定义变量，存储时间的数字
+        var n = 5;
+        //按钮禁用，属性名相同
+        $(this).prop("disabled",true).val(
+    "5s后重新发送")
+    //替换按钮的文字使用val
+    
+    //显示倒计时时间,自减的变化；定时器的内容，数字可以设置变量
+    var timer = setInterval(() =>{
+        n--;
+        //文字设置
+        //此时无变化的时间，但是this指向window对象，所以改成箭头函数
+        $(this).val(n + "s后重新发送")
+        //到0需要停止定时器
+        if (n <= 0) {
+            clearInterval(timer)
+            //返回文字设置
+            $(this).val("重新发送").prop("disabled",false)
+            //按钮取消禁用
+        }  
+    },1000)
+
+
+    })
+   
+
+
+
+    
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    </head>
+
+    <body>
+        <div class="box">这是常见方法</div>
+        <div class="box">这是第二个</div>
+        <div class="box">这是第三个</div>
+
+        <script
+            src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <script>
+        //增加html
+        var $box = $(".box")
+        // $box.html("新增标签<p>段落</p>")
+       //text方法
+    //    console.log($box.text())
+    // 替换文字
+    $box.text("普通文本")
+    //hasClass 和toggleClass都是切换属性效果的方法
+
+    </script>
+    </body>
+
+</html>

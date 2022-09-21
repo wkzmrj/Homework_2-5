@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         * {
+            margin: 0;
+            padding:0;
+        }
+        p {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <p>2</p>
+    <p>3</p>
+    <p>4</p>
+    <p>5</p>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+        //获取jq对象，一组html的元素，批量操作；
+        // $("p").css("background-color","skyblue")
+        // $("p").html("你好")
+        //运动属性的宽度改变，运动时间的改变
+        // $("p").animate({"width": 300}, 1000)
+
+        //jq不能使用原生js的方法,反之也不可以
+        // console.log($("p").innerHTML)
+
+        //原生js的对象的打印查看
+        // console.log($("p"))
+
+        //jq转换为原生对象；
+        // var $ps = $("p")
+        //本身是类数组,通过下标获得原生对象；
+        // $ps[0].innerHTML = "你好"
+
+        //原生对象转换为jq;
+        var op = document.getElementsByTagName("p")[0]
+        //$包裹
+        $(op).css("background-color","pink")
+    </script>
+</body>
+</html>

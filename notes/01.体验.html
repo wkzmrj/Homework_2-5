@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding:0;
+        }
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" id="box"></div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+      <script>     
+    //无兼容问题的方法获取元素
+    //     var box = document.getElementById('box')
+    //     var box = document.getElementsByTagName('div')[0]
+    
+    //jquery的获取元素的方法
+    // $(".box")
+    // $("#box")
+
+    //jq获取css的方式,css方法,获取相应数据
+    // console.log($("#box").css("width"))
+
+    // //更改css样式
+    // $(".box").css("width",200)
+    //  
+    
+    //jq事件简化 
+    // $(".box").click(function(){
+    //     $(this).css("background-color","skyblue")
+    // })
+    
+    //jq运动方法
+    // $(".box").animate({"width": 500}, 1000)
+    
+    </script>
+    
+</body>
+</html>

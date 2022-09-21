@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>留言板</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      background-color: #FE7E50;
+    }
+
+    #username,
+    .content {
+      background-color: white;
+    }
+
+    #checkbox,
+    #button {
+      margin-left: 300px;
+    }
+
+    #button {
+      width: 45px;
+      font-family: 宋体;
+    }
+
+    .line {
+      height: 5px;
+      background-color: green;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+    <tr>
+      <td id="name">昵称：</td>
+      <input type="text" name="username" id="username">
+    </tr>
+    <br>
+    <tr>
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+      <textarea name="content" class="content" cols="30" rows="10"></textarea>
+    </tr>
+
+    <br>
+    <tr>
+      <td>
+        <input type="checkbox" id="checkbox" name="checkbox">
+        匿名
+      </td>
+      <br>
+      <input type="button" name="button" id="button" value="发表">
+    </tr>
+  </div>
+
+  <div class="line"></div>
+
+  <ul class="comments">
+    <li>
+      <p class="username"></p>
+      <p class="time"></p>
+    </li>
+    <li class="content2"></li>
+  </ul>
+
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script>
+
+    $("#button").click(function () {
+      const nameValue = $("#username").val();
+      const contentValue = $(".content").val();
+      const date = new Date();
+      const hour = date.getHours();
+      const minutes = date.getMinutes();
+      const seconds = date.getSeconds();
+      
+      const currentTime = hour + ":" + minutes + ":" + seconds;
+
+      const newComment = $("<li><p>" + nameValue + "</p><p>" + currentTime + "</p><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + contentValue + "</li>");
+      const anonmComment = $("<li><p>路人甲</p><p>" + currentTime + "</p><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + contentValue + "</li>");
+
+      const checkbox = $("input[name='checkbox']").prop("checked");
+      
+      function Reaction() {
+        $(".comments").show();
+        $("#username").val("")
+        $(".content").val("");
+        $("#checkbox").prop("checked",false);
+      }
+
+      if (nameValue == "" || contentValue == "") {
+        alert("昵称和内容不能为空白")
+      } else if (nameValue !== "" && contentValue !== "") {
+        if (checkbox== false){
+          $(".comments").append(newComment);
+        } else if (checkbox == true){
+          $(".comments").append(anonmComment);
+        }
+        Reaction();
+      }
+    })
+
+    //当昵称/内容为空，alert
+    //提交之后，显示板块界限，昵称，时间和留言板内容
+    //点击匿名，显示板块，路人甲昵称，时间和留言板内容
+  </script>
+</body>
+
+</html>
